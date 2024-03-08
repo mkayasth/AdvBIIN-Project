@@ -4,8 +4,17 @@
 
  Installations:
 
- 1) Prokka: minced does not install via brew, ran brew uninstall minced, started working.
-      hmmer not working, but viral annotation working regardless; bacteria annotaton not working as of now.
-2) Muscle
-3) Pip
-4) Python: biopython
+ 1) Prokka: minced does not install via brew; but minced not required for viral annotation. Brew install Prokka, uninstall minced, start working.
+       If brew installed:
+    > brew install brewsci/bio/prokka
+    > brew uninstall minced
+
+Error with hmmer3 for bacterial and archael annotation. However, hmmer3 not required for viral annotation. If you want to work with bacterial genome:
+> cpan
+> install Bio::searchIO::hmmer3
+> exit
+
+2) Muscle: from https://github.com/rcedgar/muscle/releases/tag/5.1.0
+ Add Muscle to your PATH.
+
+4) Python3: numpy, pandas, matplotlib, biopython
