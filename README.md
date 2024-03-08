@@ -12,7 +12,9 @@
 
 Error with hmmer3 for bacterial and archael annotation. However, hmmer3 not required for viral annotation. If you want to work with bacterial genome:
 >> cpan
+
 >> install Bio::searchIO::hmmer3
+
 >> exit
 
 2) Muscle: from https://github.com/rcedgar/muscle/releases/tag/5.1.0
