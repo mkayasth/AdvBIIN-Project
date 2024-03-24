@@ -1,23 +1,37 @@
- AdvBIIN-Project
+ <h1> AdvBIIN-Project: ViralGeneClock. </h1>
+ 
 
- // Ongoing project.
+ <h2> // Ongoing project. </h2>
+ 
 
- Installations:
+<h2> Introduction </h2>
+ViralGeneClock is a Linux tool developed through the Ubuntu subsystem. Using ViralGeneClock, the users can deposit the whole genome sequence (WGS) of different strains of a virus. The tool would then examine the evolutionary relationship of the strains, and also compare the mutation rates of the genes across the strains. It uses Prokka for viral genome annotation, Muscle for multiple sequence alignment of each gene for different strains and Neighbor Joining Algorithm for estimating the relative mutation rates of the genes and evolutionary history.
 
- 1) Prokka: minced does not install via brew; but minced not required for viral annotation. Brew install Prokka, uninstall minced, start working.
-       If brew installed:
-    >> brew install brewsci/bio/prokka
-    
-    >> brew uninstall minced
+<h2> Usage </h2>
 
-Error with hmmer3 for bacterial and archael annotation. However, hmmer3 not required for viral annotation. If you want to work with bacterial genome:
->> cpan
+```shell
 
->> install Bio::searchIO::hmmer3
+python3 main.py output-directory
+```
 
->> exit
+<h2> Installations: </h2>
 
-2) Muscle: from https://github.com/rcedgar/muscle/releases/tag/5.1.0
- Add Muscle to your PATH.
+1) Prokka: For detailed Prokka installation in your system, visit this site: https://github.com/tseemann/prokka
+ 
+For brew users in Linux: <br>
+minced does not install via brew; but minced is not required for viral annotation. After Brew installs Prokka, uninstall minced, and start working!
 
-4) Python3: numpy, pandas, matplotlib, biopython
+ ```shell
+brew install brewsci/bio/prokka
+brew uninstall minced
+```
+<b> Add Prokka to your PATH. </b> <br> <br>
+
+
+
+2) Muscle: Install Muscle from this site: https://github.com/rcedgar/muscle/releases/tag/5.1.0  <br>
+<b> Add Muscle to your PATH. </b> <br> <br>
+
+
+
+3) Python3: with the Biopython package and other modules (numpy, pandas, matplotlib) for data manipulation and visualization.
