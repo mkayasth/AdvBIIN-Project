@@ -1,5 +1,3 @@
-# Python script that extracts sequence from 16 SARS-CoV-2 strains. The resulting FASTA file can be used as an input sequence for ViralGeneClock.
-
 from Bio import Entrez, SeqIO
 import requests
 
@@ -10,20 +8,19 @@ Entrez.email = "mkayasth@ramapo.edu"
 accession_to_strain = {
     "NC_045512": "B",
     "OR075545": "XBB.1.16",
-    "OQ991501": "XBB.1.5",
-    "PP127519": "EG.5.1",
+    "OQ608429": "XBB.1.5",
+    "OR813619": "EG.5",
     "PP292788": "AY.3",
-    "PP429773": "BA.2",
-    "PP439021": "BA.5.5",
-    "PP298667": "CH.1.1",
+    "OR813619": "BA.2.86",
+    "OR829491": "CH.1.1",
     "PP250483": "BF.10",
-    "PP439669": "JN.1",
+    "PP316714": "JN.1",
     "PP435534": "HV.1",
     "OQ437945": "B.1.1.7",
     "PP421053": "P.1",
     "PP299611": "B.1.617.2",
     "PP292591": "BE.1",
-    "PP298634": "DN.2"
+    "OQ938406": "DN.2"
 }
 
 output_file = "tool_input.fasta"
