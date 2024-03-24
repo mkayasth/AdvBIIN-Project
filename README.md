@@ -29,9 +29,18 @@ brew uninstall minced
 
 
 
-2) Muscle: Install Muscle from this site: https://github.com/rcedgar/muscle/releases/tag/5.1.0  <br>
+2) Muscle: Install Muscle as per your OS from this site: https://github.com/rcedgar/muscle/releases/tag/5.1.0  <br>
 <b> Add Muscle to your PATH. </b> <br> <br>
 
 
 
 3) Python3: with the Biopython package and other modules (numpy, pandas, matplotlib) for data manipulation and visualization.
+
+If you have pip installed for your Python3, follow these steps:
+```shell
+
+python3 -m pip install biopython
+python3 -m pip install numpy
+python3 -m pip install pandas
+python3 -m pip install matplotlib
+```
