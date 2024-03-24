@@ -1,40 +1,48 @@
-from Bio import Entrez, SeqIO
+# Python script that extracts sequence from 16 SARS-CoV-2 strains. The resulting FASTA file can be used as an input sequence for ViralGeneClock.
 
+from Bio import Entrez, SeqIO
+import requests
+
+# replace with your email id.
 Entrez.email = "mkayasth@ramapo.edu"
 
-handle = Entrez.esearch(db="nucleotide", term="SARS-CoV-2 genome", retmax=20)
-record = Entrez.read(handle)
-idlist = record["IdList"]
+# mapping accession numbers to strain names
+accession_to_strain = {
+    "NC_045512": "B",
+    "OR075545": "XBB.1.16",
+    "OQ991501": "XBB.1.5",
+    "PP127519": "EG.5.1",
+    "PP292788": "AY.3",
+    "PP429773": "BA.2",
+    "PP439021": "BA.5.5",
+    "PP298667": "CH.1.1",
+    "PP250483": "BF.10",
+    "PP439669": "JN.1",
+    "PP435534": "HV.1",
+    "OQ437945": "B.1.1.7",
+    "PP421053": "P.1",
+    "PP299611": "B.1.617.2",
+    "PP292591": "BE.1",
+    "PP298634": "DN.2"
+}
 
-print("Records Found:", record["Count"])
+output_file = "tool_input.fasta"
 
-print("20 IDs for SARS-CoV-2 genome sequences:\n", idlist)
+with open(output_file, 'w') as outfile:
+    for accession, strain_name in accession_to_strain.items():
+        try:
+            handle = Entrez.efetch(db="nucleotide", id=accession, rettype="fasta", retmode="text")
+            record = SeqIO.read(handle, "fasta")
+            
+            # replacing the header with the strain name
+            record.id = strain_name
+            record.description = strain_name
+            
+            # writing the modified sequence to the output file
+            SeqIO.write(record, outfile, "fasta")
+            handle.close()
+            print(f"Successfully fetched and added {strain_name}")
+        except Exception as e:
+            print(f"Failed to fetch {accession} ({strain_name}): {e}")
 
-# Dictionary to store {ID:[accession number, length, sample collection date, country, FASTA sequence]}
-sequences_dict = {}
-
-for uid in idlist:
-        handle = Entrez.efetch(db="nucleotide", id=uid, rettype="gb", retmode="text")
-        record = SeqIO.read(handle, "genbank")
-    
-        
-        accession_number = record.id.split(".")[0]  # Extract accession number from the sequence ID
-        collection_date = "Unknown"
-        country = "Unknown"
-        for feature in record.features:
-            if "collection_date" in feature.qualifiers:
-                collection_date = feature.qualifiers["collection_date"][0]
-            if "country" in feature.qualifiers:
-                country = feature.qualifiers["country"][0]
-        sequences_dict[uid] = [accession_number, len(record.seq), collection_date, country, str(record.seq)]
-        
-# Printing the dictionary info.
-print("Sequences information stored in dictionary:")
-for uid, info in sequences_dict.items():
-    print(f"ID: {uid}")
-    print(f"Accession Number: {info[0]}")
-    print(f"Length: {info[1]}")
-    print(f"Collection Date: {info[2]}")
-    print(f"Country: {info[3]}")
-    print(f"Sequence:\n{info[4]}")
-
+print("Done fetching sequences. All sequences have been written to:", output_file)
