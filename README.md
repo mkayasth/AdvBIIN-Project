@@ -14,27 +14,31 @@ ViralGeneClock is a Linux tool developed through the Ubuntu subsystem. Using Vir
 python3 main.py output-directory
 ```
 
-<h2> Installations: </h2>
+<h2> Installations </h2>
 
-1) Prokka: For detailed Prokka installation in your system, visit this site: https://github.com/tseemann/prokka
+<h3>1) Prokka:</h3> For detailed Prokka installation instructions for your OS, visit this site: https://github.com/tseemann/prokka <br> <br>
  
 For brew users in Linux: <br>
-minced does not install via brew; but minced is not required for viral annotation. After Brew installs Prokka, uninstall minced, and start working!
+minced does not properly install via brew; but minced is not required for viral annotation. After Brew installs Prokka, uninstall minced, and start working!
 
  ```shell
 brew install brewsci/bio/prokka
 brew uninstall minced
 ```
-<b> Add Prokka to your PATH. </b> <br> <br>
 
+For Ubuntu users with sudo access, you can also follow these steps:
+```shell
+sudo apt-get install libdatetime-perl libxml-simple-perl libdigest-md5-perl git default-jre bioperl
+sudo cpan Bio::Perl
+git clone https://github.com/tseemann/prokka.git $HOME/prokka
+$HOME/prokka/bin/prokka --setupdb
+```
+<h4> Add Prokka to your PATH. </h4> <br>
 
+<h3>2) Muscle:</h3> For detailed Muscle installation instructions for your OS, visit this site: https://github.com/rcedgar/muscle/releases/tag/5.1.0  <br>
+<h4> Add Muscle to your PATH. </h4> <br>
 
-2) Muscle: Install Muscle as per your OS from this site: https://github.com/rcedgar/muscle/releases/tag/5.1.0  <br>
-<b> Add Muscle to your PATH. </b> <br> <br>
-
-
-
-3) Python3: with the Biopython package and other modules (numpy, pandas, matplotlib) for data manipulation and visualization.
+<h3>3) Python3:</h3> Biopython package with other modules (numpy, pandas, matplotlib) for data manipulation and visualization.
 
 If you have pip installed for your Python3, follow these steps:
 ```shell
