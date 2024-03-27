@@ -48,3 +48,4 @@ python3 -m pip install numpy
 python3 -m pip install pandas
 python3 -m pip install matplotlib
 ```
+<h3>Note: </h3>This tool executes scripts using the 'python3' command, so ensure Python 3 is installed on your system. Additionally, all required packages mentioned above must be installed for the Python3 environment that is invoked when you run 'python3' from the command line.
