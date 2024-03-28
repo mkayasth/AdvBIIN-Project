@@ -6,7 +6,7 @@ Entrez.email = "mkayasth@ramapo.edu"
 
 # mapping accession numbers to strain names
 accession_to_strain = {
-    "NC_045512": "B",
+    "NC_045512": "Wuhan",
     "OR075545": "XBB.1.16",
     "OQ608429": "XBB.1.5",
     "OR598953": "EG.5",
